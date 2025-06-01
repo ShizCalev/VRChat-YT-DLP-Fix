@@ -42,6 +42,7 @@ bool CheckIfGameRunning(const std::filesystem::path& cleanupFile)
             std::filesystem::remove(cleanupFile);
             std::cout << "Cleaned up file: " << cleanupFile << std::endl;
         }
+        Sleep(10000);
         return false;
     }
     return true;
@@ -104,7 +105,7 @@ int main()
         if (count >= 30) // seconds
         {
             std::cout << "Exceeded maximum wait time. VRChat.exe not found." << std::endl;
-            Sleep(5000);
+            Sleep(10000);
             return 0;
         }
         if (!count)
@@ -123,6 +124,7 @@ int main()
     if (_dupenv_s(&appDataPath, &len, "LOCALAPPDATA") != 0 || appDataPath == nullptr)
     {
         std::cerr << "Error: Unable to retrieve LOCALAPPDATA environment variable." << std::endl;
+        Sleep(10000);
         return 0;
     }
 
@@ -135,6 +137,7 @@ int main()
         if (!file.is_open())
         {
             std::cerr << "Error opening file: " << ytDlpConfig << "\n" << std::endl;
+            Sleep(10000);
             return 0;
         }
         std::cout << "yt-dlp config found at " << ytDlpConfig << "\nFile Contents:" << std::endl;
@@ -173,6 +176,7 @@ int main()
         if (!outFile.is_open())
         {
             std::cerr << "Error opening file for writing: " << ytDlpConfig << "\n" << std::endl;
+            Sleep(10000);
             return 0;
         }
         if (!containsCookiesFromBrowser)
@@ -182,6 +186,7 @@ int main()
             if (defaultBrowser.empty())
             {
                 std::cerr << "ERROR: Failed to detect default web browser from registry or browser not recognized." << std::endl;
+                Sleep(10000);
                 return 0;
             }
             std::cout << "Browser detected as: " << defaultBrowser << std::endl;
@@ -209,18 +214,25 @@ int main()
     }
     else
     {
-        std::cout << "yt-dlp config file not found. Creating default config..." << "\n" << std::endl;
+        std::cout << "yt-dlp config file not found. Creating default config in " << ytDlpConfig.parent_path() << "\n" << std::endl;
 
         std::string defaultBrowser = GetDefaultWebBrowser();
         if (defaultBrowser.empty())
         {
             std::cerr << "ERROR: Failed to detect default web browser from registry or browser not recognized." << std::endl;
+            Sleep(10000);
             return 0;
+        }
+
+        if (!std::filesystem::exists(ytDlpConfig.parent_path()))
+        {
+            std::filesystem::create_directories(ytDlpConfig.parent_path());
         }
         std::ofstream outFile(ytDlpConfig);
         if (!outFile.is_open())
         {
             std::cerr << "Error creating file: " << ytDlpConfig << "\n" << std::endl;
+            Sleep(10000);
             return 0;
         }
         // Write the default configuration with the default browser
@@ -231,6 +243,7 @@ int main()
     if (!IsProcessRunning(L"VRChat.exe"))
     {
         std::cout << "\nVRChat no longer running, exiting!" << std::endl;
+        Sleep(10000);
         return 0;
     }
 
@@ -358,6 +371,7 @@ int main()
         std::filesystem::rename(ytDlpPath.parent_path() / "yt-dlp-latest.exe", ytDlpPath.parent_path() / "yt-dlp.exe");
         std::cout << "Finished replacing VRChat's YT-DLP with the official version." << std::endl;
     }
+    std::cout << "Thanks for using. <3" << std::endl;
 
     return 1;
 }
