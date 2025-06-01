@@ -17,7 +17,7 @@ And you're set! Everything's automatic from there.
    
 ![Screenshot 2025-05-31 225412](https://github.com/user-attachments/assets/850cc3a0-4e54-4e40-8b56-96a12c8157c3)
 
-![Screenshot 2025-05-31 225626](https://github.com/user-attachments/assets/8cd42bc6-f27d-48d1-b900-f91d3c3af38d)
+![image](https://github.com/user-attachments/assets/04cc563c-3b76-4e6a-802a-5944a0edb6c0)
 
 
 - If you are using browser containers (if you don't know what that means, then you most likely aren't using them), you will have to manually edit AppData/Roaming/yt-dlp/config and specify what container you want to pull cookies from - ie `--cookies-from-browser firefox::"youtube tabs"`
