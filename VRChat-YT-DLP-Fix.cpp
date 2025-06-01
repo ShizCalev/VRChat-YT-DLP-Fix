@@ -323,7 +323,7 @@ int main()
         {
             return 0;
         }
-        if (duration > 15)
+        if (duration > 60)
         {
             std::cout << "Waited a minute without VRChat replacing YT-DLP, proceeding." << "\n" << std::endl;
             break;
