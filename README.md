@@ -1,5 +1,9 @@
 # VRChat-YT-DLP-Fix
 This program fixes VRChat's YT-DLP "Sign in to confirm you're not a bot" warning by replacing their stripped down version with the official version of YT-DLP, allowing VRChat to operate using your actual web-browser's sign in cookies.
+
+This is an alternative to [VRCVideoCacher](https://github.com/EllyVR/VRCVideoCacher), which also tackles the same issue but through a different method:
+- Mine utilizies YT-DLP's normal config file (in your AppData/Roaming/yt-dlp folder) to specify which browser YT-DLP's built in functionality should pull its cookies from, fixing the YT-DLP issue at a system level (as opposed to only fixing it for VRChat.)
+- Theirs requires installing a browser extension which export your browser's cookies to their program.
 _________
 
 ### **This requires [VRCX](https://github.com/vrcx-team/VRCX ) to load.**
