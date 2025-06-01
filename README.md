@@ -7,7 +7,7 @@ _________
 ________
 
 ### Usage: 
-1) Extract the .exe file wherever you want.
+1) [Download](https://github.com/ShizCalev/VRChat-YT-DLP-Fix/releases) and extract the .exe file wherever you want.
 1) Open VRCX, navigate to App Launcher.
 1) Turn on the "Enable" slider.
 1) Click the Auto-Launch Folder button.
