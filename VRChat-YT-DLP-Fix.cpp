@@ -83,6 +83,8 @@ std::string GetDefaultWebBrowser()
                 return "vivaldi";
             else if (progId.find("OperaHTML") != std::string::npos)
                 return "opera";
+            else if (progId.find("OperaStable") != std::string::npos)
+                return "opera";
             else if (progId.find("ChromiumHTM") != std::string::npos)
                 return "chromium";
             else if (progId.find("BraveHTML") != std::string::npos)
